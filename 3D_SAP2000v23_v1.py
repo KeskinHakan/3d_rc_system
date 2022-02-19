@@ -59,18 +59,27 @@ assembled_joint_masses = 'Assembled Joint Masses' # change it to your sheet name
 connectivity_frame = "Connectivity - Frame"
 joint_coordinates = "Joint Coordinates"
 
-import streamlit as st
-import os
 
-def file_selector(folder_path='.'):
-    filenames = os.listdir(folder_path)
-    selected_filename = st.selectbox('Select a file', filenames)
-    return os.path.join(folder_path, selected_filename)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    #read xls or xlsx
+    df1 = pd.read_excel(uploaded_file)
+else:
+    st.warning("you need to upload a csv or excel file.")
 
-filename = file_selector()
-st.write('You selected `%s`' % filename)
+     
+# import streamlit as st
+# import os
 
-main_file_name = filename    
+# def file_selector(folder_path='.'):
+#     filenames = os.listdir(folder_path)
+#     selected_filename = st.selectbox('Select a file', filenames)
+#     return os.path.join(folder_path, selected_filename)
+
+# filename = file_selector()
+# st.write('You selected `%s`' % filename)
+
+main_file_name = uploaded_file    
 # main_file_name = '3D_Example_Deneme.xlsx' # change it to the name of your excel file
 
 # df_main = read_excel(main_file_name, sheet_name = my_sheet_main, engine='openpyxl')
