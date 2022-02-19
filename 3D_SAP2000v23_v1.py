@@ -61,10 +61,16 @@ joint_coordinates = "Joint Coordinates"
 
 file_choice = st.sidebar.selectbox("Design Type: ", {"Yes", "No"})
 
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
+main_file_name = st.file_uploader("Choose a file")
+if main_file_name is not None:
     #read xls or xlsx
-    df1 = pd.read_excel(uploaded_file)
+    df_joint_mass = read_excel(main_file_name, sheet_name = assembled_joint_masses)
+    df_joint = read_excel(main_file_name, sheet_name = joint_coordinates)
+    df_frame = read_excel(main_file_name, sheet_name = connectivity_frame)
+    df_restrain = read_excel(main_file_name, sheet_name = restrained)
+    df_frame_section = read_excel(main_file_name, sheet_name = frame_section)
+    df_section_properties = read_excel(main_file_name, sheet_name = section_properties)
+    df_section_rebar = read_excel(main_file_name, sheet_name = section_rebar)
 else:
     st.warning("you need to upload a csv or excel file.")
 
@@ -82,17 +88,17 @@ if file_choice == "Yes":
     # filename = file_selector()
     # st.write('You selected `%s`' % filename)
     
-    main_file_name = uploaded_file    
-    # main_file_name = '3D_Example_Deneme.xlsx' # change it to the name of your excel file
+    # main_file_name = uploaded_file    
+    # # main_file_name = '3D_Example_Deneme.xlsx' # change it to the name of your excel file
     
-    # df_main = read_excel(main_file_name, sheet_name = my_sheet_main, engine='openpyxl')
-    df_joint_mass = read_excel(main_file_name, sheet_name = assembled_joint_masses)
-    df_joint = read_excel(main_file_name, sheet_name = joint_coordinates)
-    df_frame = read_excel(main_file_name, sheet_name = connectivity_frame)
-    df_restrain = read_excel(main_file_name, sheet_name = restrained)
-    df_frame_section = read_excel(main_file_name, sheet_name = frame_section)
-    df_section_properties = read_excel(main_file_name, sheet_name = section_properties)
-    df_section_rebar = read_excel(main_file_name, sheet_name = section_rebar)
+    # # df_main = read_excel(main_file_name, sheet_name = my_sheet_main, engine='openpyxl')
+    # df_joint_mass = read_excel(main_file_name, sheet_name = assembled_joint_masses)
+    # df_joint = read_excel(main_file_name, sheet_name = joint_coordinates)
+    # df_frame = read_excel(main_file_name, sheet_name = connectivity_frame)
+    # df_restrain = read_excel(main_file_name, sheet_name = restrained)
+    # df_frame_section = read_excel(main_file_name, sheet_name = frame_section)
+    # df_section_properties = read_excel(main_file_name, sheet_name = section_properties)
+    # df_section_rebar = read_excel(main_file_name, sheet_name = section_rebar)
     # print(df_main.head()) # shows headers with top 5 rows
     # print(df_main.info())
     
