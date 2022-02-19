@@ -1,0 +1,8 @@
+openseespy==3.3.0.1.1
+streamlit==0.89.0
+pydeck==0.7.0
+bokeh==2.3.2
+matplotlib==3.3.4
+numpy==1.20.1
+pandas==1.2.4
+Pillow==9.0.1
