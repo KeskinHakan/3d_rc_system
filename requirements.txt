@@ -6,3 +6,6 @@ matplotlib==3.3.4
 numpy==1.20.1
 pandas==1.2.4
 Pillow==9.0.1
+xlrd<2.0
+openpyxl == 3.0.7
+
